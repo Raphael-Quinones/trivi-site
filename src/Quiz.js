@@ -1,4 +1,6 @@
 import React from "react"
+import { nanoid } from "nanoid";
+
 import Questions from "./Questions"
 
 export default function(){
@@ -36,8 +38,12 @@ export default function(){
         const itemlist = []
         for (let categ in list){
             const item = list[categ]
-            console.log(item.question)
-            itemlist.push(<Questions prompt = {item.question} choices ={shuffleChoices(item.correct_answer, item.incorrect_answers)}/>)
+            itemlist.push({
+                id: nanoid(),
+                question: item.question,
+                correctAnswer: item.correct_answer,
+                choices: shuffleChoices(item.correct_answer, item.incorrect_answers)
+            })
         }
         return itemlist
     }
@@ -46,11 +52,19 @@ export default function(){
 
 
     const items = cycleQuestions(questions)
+
+    const itemsToTag = items.map(item => (
+        <Questions 
+            key = {item.id}
+            question = {item.question}
+            choices = {item.choices}
+        />
+    ))
     
 
     return(
         <div className = "quiz">
-            {items}
+            {itemsToTag}
         </div>
     )
 }

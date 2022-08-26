@@ -14,7 +14,7 @@ export default function(props){
     return(
         <div className = "question">
             <h3 className = "question--prompt">
-                {props.prompt}
+                {props.question}
             </h3>
             {listChoices}
         </div>
