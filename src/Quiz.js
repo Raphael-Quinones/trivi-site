@@ -26,8 +26,9 @@ export default function(){
         //maybe because after the whole page refreshes, questions variables are now semi-permanently changed
     },[])
     
-    const first = questions[0]
-    console.log(first.question)
+    for (let categ in questions){
+        console.log(questions[categ].question)
+    }
     
     
 
