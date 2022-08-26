@@ -28,8 +28,9 @@ export default function(){
     function cycleQuestions(list){
         const itemlist = []
         for (let categ in list){
-            console.log(list[categ].question)
-            itemlist.push(<Questions prompt = {list[categ].question} items ={["as",'asdf']}/>)
+            const item = list[categ]
+            console.log(item.question)
+            itemlist.push(<Questions prompt = {item.question} items ={item.incorrect_answers}/>)
         }
         return itemlist
     }
@@ -37,13 +38,12 @@ export default function(){
     
 
 
-    const experiment = cycleQuestions(questions)
-    console.log(experiment)
+    const items = cycleQuestions(questions)
     
 
     return(
         <div className = "quiz">
-            {experiment}
+            {items}
         </div>
     )
 }
