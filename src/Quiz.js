@@ -5,14 +5,10 @@ export default function(){
     
     const [questions, setQuestions] = React.useState({})
     
-    
-    
-
-    
-    //sendAPIRequest() executes twice when called
-    //So I utilized useEffect to just call it once
-    //works haha
     React.useEffect(()=>{
+        //sendAPIRequest() executes twice when called
+        //So I utilized useEffect to just call it once
+        //works haha
         //await only works inside async functions
         async function sendAPIRequest(){
             const response = await fetch('https://opentdb.com/api.php?amount=10',
@@ -26,16 +22,28 @@ export default function(){
         sendAPIRequest()
 ;        
     },[])
-    
-    for (let categ in questions){
-        console.log(questions[categ].question)
+
+
+
+    function cycleQuestions(list){
+        const itemlist = []
+        for (let categ in list){
+            console.log(list[categ].question)
+            itemlist.push(<Questions prompt = {list[categ].question} items ={["as",'asdf']}/>)
+        }
+        return itemlist
     }
     
     
 
+
+    const experiment = cycleQuestions(questions)
+    console.log(experiment)
+    
+
     return(
         <div className = "quiz">
-            <Questions prompt = {'as'} items ={["as",'asdf']}/>
+            {experiment}
         </div>
     )
 }
