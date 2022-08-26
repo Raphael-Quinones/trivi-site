@@ -1,14 +1,14 @@
 import React from "react"
 
 export default function(props){
-    function choices(choice){
+    function choicesDisplay(option){
         return (
-            <button value = {choice}>{choice}</button>
+            <button value = {option}>{option}</button>
         )
     }
     
-    const listChoices = props.items.map(choice =>
-                                choices(choice))
+    const listChoices = props.choices.map(option =>
+                                choicesDisplay(option))
     
                                 
     return(
