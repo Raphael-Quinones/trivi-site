@@ -22,15 +22,22 @@ export default function(){
         sendAPIRequest()
 ;        
     },[])
+    
 
-
+    function shuffleChoices(correct, incorrect){
+        //merges the two arrays
+        const choicesArray = [correct, ...incorrect]
+        //shuffles choices
+        choicesArray.sort((a, b) => 0.5 - Math.random());
+        return choicesArray
+    }
 
     function cycleQuestions(list){
         const itemlist = []
         for (let categ in list){
             const item = list[categ]
             console.log(item.question)
-            itemlist.push(<Questions prompt = {item.question} items ={item.incorrect_answers}/>)
+            itemlist.push(<Questions prompt = {item.question} choices ={shuffleChoices(item.correct_answer, item.incorrect_answers)}/>)
         }
         return itemlist
     }
