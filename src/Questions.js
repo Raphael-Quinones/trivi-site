@@ -8,13 +8,19 @@ export default function(props){
     }
     
     const listChoices = props.choices.map(option =>
-                                choicesDisplay(option))
-    
+                                choicesDisplay(decodeHtml(option)))
+
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
                                 
     return(
         <div className = "question">
             <h3 className = "question--prompt">
-                {props.question}
+                {decodeHtml(props.question)}
             </h3>
             {listChoices}
         </div>
