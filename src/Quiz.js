@@ -8,6 +8,7 @@ export default function(){
     const [questions, setQuestions] = React.useState({})
     const [playing, setPlaying] = React.useState(true)
     const [items, setItems] = React.useState([])
+    const [score, setScore] = React.useState(0)
     
     React.useEffect(()=>{
         //sendAPIRequest() executes twice when called
@@ -43,7 +44,6 @@ export default function(){
             const trivias = await response.json()
 
             const exp = trivias.results
-            console.log(exp)
             //I still don't know exactly why, but storing the array using hooks works
             //maybe because after the whole page refreshes, questions variables are now semi-permanently changed
 
@@ -61,16 +61,21 @@ export default function(){
 ;        
     },[])
 
-    //function to be used inside Questions.js
-    function changePlaying(){
-        setPlaying(prevPlay => !prevPlay)
-    }
-
+   
     function callPlay(){
         return playing
     }
-    
 
+    function changePlay(){
+        setPlaying(prevState => !prevState)
+    }
+    
+    function checkAnswers(answer, correctAnswer){
+        const test = answer === correctAnswer
+        if (test){
+            setScore(prevState => prevState + 1)
+        }
+    }
     
     
 
@@ -83,8 +88,9 @@ export default function(){
             correctAnswer = {item.correctAnswer}
             choices = {item.choices}
 
-            changePlaying = {changePlaying}
             callPlay = {callPlay}
+            checkAnswers = {checkAnswers}
+
         />
     ))
     
@@ -92,7 +98,7 @@ export default function(){
     return(
         <div className = "quiz">
             {itemsToTag}
-        <button className = "check-answers" onClick = {changePlaying}>
+        <button className = "check-answers" onClick = {changePlay}>
             {callPlay() ? "Check Answers" : "Play Again"}
         </button>
         </div>
