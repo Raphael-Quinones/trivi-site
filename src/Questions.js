@@ -1,14 +1,22 @@
 import React from "react"
 
 export default function(props){
-    function choicesDisplay(option){
+    const [chosen, setChosen] = React.useState("")
+
+    function choicesDisplay(props, option){
+        function buttonClick(){
+            setChosen(() => option)
+        }
+        const additionalStyles = option === chosen ? "chosen--button" : "";
+        console.log("test:", option === chosen, additionalStyles)
+        console.log("option:", option)
         return (
-            <button value = {option}>{option}</button>
+            <button className = {option === chosen ? "chosen--button" : "choice--item"} value = {option} onClick = {buttonClick}>{option}</button>
         )
     }
     
     const listChoices = props.choices.map(option =>
-                                choicesDisplay(decodeHtml(option)))
+                                choicesDisplay(props, decodeHtml(option)))
 
     function decodeHtml(html) {
         var txt = document.createElement("textarea");
@@ -22,7 +30,9 @@ export default function(props){
             <h3 className = "question--prompt">
                 {decodeHtml(props.question)}
             </h3>
-            {listChoices}
+            <div className = "choices">
+                {listChoices}
+            </div>
         </div>
     )
 }

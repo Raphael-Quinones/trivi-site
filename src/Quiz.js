@@ -13,7 +13,7 @@ export default function(){
         //works haha
         //await only works inside async functions
         async function sendAPIRequest(){
-            const response = await fetch('https://opentdb.com/api.php?amount=10',
+            const response = await fetch('https://opentdb.com/api.php?amount=3',
             { mode: "cors" });
             const trivias = await response.json()
 
@@ -57,6 +57,7 @@ export default function(){
         <Questions 
             key = {item.id}
             question = {item.question}
+            correctAnswer = {item.correctAnswer}
             choices = {item.choices}
         />
     ))
