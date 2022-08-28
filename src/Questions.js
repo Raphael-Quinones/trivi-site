@@ -7,9 +7,6 @@ export default function(props){
         function buttonClick(){
             setChosen(() => option)
         }
-        const additionalStyles = option === chosen ? "chosen--button" : "";
-        console.log("test:", option === chosen, additionalStyles)
-        console.log("option:", option)
         return (
             <button className = {option === chosen ? "chosen--button" : "choice--item"} value = {option} onClick = {buttonClick}>{option}</button>
         )
