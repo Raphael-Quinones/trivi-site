@@ -50,7 +50,11 @@ body{
     font-size: 16px;
 }
 
-.choice--item{
+.chosen--button{
     background-color: yellow;
+}
+
+.check--answers{
+    padding: 5px;
 }
 

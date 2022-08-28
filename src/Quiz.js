@@ -6,6 +6,7 @@ import Questions from "./Questions"
 export default function(){
     
     const [questions, setQuestions] = React.useState({})
+    const [playing, setPlaying] = React.useState(true)
     
     React.useEffect(()=>{
         //sendAPIRequest() executes twice when called
@@ -24,6 +25,15 @@ export default function(){
         sendAPIRequest()
 ;        
     },[])
+
+    //function to be used inside Questions.js
+    function changePlaying(){
+        setPlaying(prevPlay => !prevPlay)
+    }
+
+    function callPlay(){
+        return playing
+    }
     
 
     function shuffleChoices(correct, incorrect){
@@ -59,6 +69,9 @@ export default function(){
             question = {item.question}
             correctAnswer = {item.correctAnswer}
             choices = {item.choices}
+
+            changePlaying = {changePlaying}
+            callPlay = {callPlay}
         />
     ))
     
@@ -66,6 +79,10 @@ export default function(){
     return(
         <div className = "quiz">
             {itemsToTag}
+        <button className = "check-answers" onClick = {changePlaying}>
+            {callPlay() ? "Check Answers" : "Play Again"}
+        </button>
         </div>
+        
     )
 }
