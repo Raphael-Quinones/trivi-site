@@ -2,21 +2,12 @@ import React from "react"
 
 export default function(props){
     const [chosen, setChosen] = React.useState("")
-    const [correction, setCorrection] = React.useState()
 
     //calls playing useState to be used in useEffect
     const playing = props.callPlay()
     React.useEffect(()=>{
         //checkanswers
         const temp = !props.callPlay() ? props.checkAnswers(chosen, props.correctAnswer) : {}
-
-
-        //runs when player finished answering
-        if (playing === false){
-            if (chosen != props.correctAnswer){
-                setCorrection("Correct Answer is: " + decodeHtml(props.correctAnswer))
-            }
-        }
     },[playing])
 
     function choicesDisplay(props, option){
@@ -55,9 +46,7 @@ export default function(props){
             <div className = "choices">
                 {listChoices}
             </div>
-            <div className = "correction">
-                {correction}
-            </div>
+            <hr className = "item--division"/>
         </div>
     )
 }

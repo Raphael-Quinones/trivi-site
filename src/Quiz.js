@@ -99,7 +99,7 @@ export default function(){
     return(
         <div className = "quiz">
             {itemsToTag}
-        <button className = "check-answers" onClick = {changePlay}>
+        <button className = "check--answers" onClick = {changePlay}>
             {callPlay() ? "Check Answers" : "Play Again"}
         </button>
         <div className = "score">       
