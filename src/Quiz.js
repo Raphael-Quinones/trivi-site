@@ -103,7 +103,7 @@ export default function(){
             {callPlay() ? "Check Answers" : "Play Again"}
         </button>
         <div className = "score">       
-            {playing ? "" : score}
+            {playing ? "" : score + "/5"}
         </div>
         </div>
         

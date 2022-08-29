@@ -14,7 +14,7 @@ export default function(props){
         //runs when player finished answering
         if (playing === false){
             if (chosen != props.correctAnswer){
-                setCorrection("Correct Answer is: " + props.correctAnswer)
+                setCorrection("Correct Answer is: " + decodeHtml(props.correctAnswer))
             }
         }
     },[playing])
@@ -25,7 +25,12 @@ export default function(props){
         }
 
         return (
-            <button className = {option === chosen ? "chosen--button" : "choice--item"} value = {option} onClick = {buttonClick}>{decodeHtml(option)}</button>
+            <button className = {option === chosen ?
+                    (!playing ? (chosen === props.correctAnswer ?  "choice--correct" : "choice--wrong"): 
+                        "chosen--button"):
+                    "choice--item"} 
+                    value = {option} 
+                    onClick = {buttonClick}>{decodeHtml(option)}</button>
         )
     }
     
