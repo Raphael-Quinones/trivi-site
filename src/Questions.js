@@ -21,7 +21,8 @@ export default function(props){
                         "chosen--button"):
                     "choice--item"} 
                     value = {option} 
-                    onClick = {buttonClick}>{decodeHtml(option)}</button>
+                    onClick = {buttonClick}
+                    disabled = {playing ? false: true}>{decodeHtml(option)}</button>
         )
     }
     
