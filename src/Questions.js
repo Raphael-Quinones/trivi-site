@@ -16,12 +16,12 @@ export default function(props){
         }
 
         return (
-            <button className = {option === chosen ? "chosen--button" : "choice--item"} value = {option} onClick = {buttonClick}>{option}</button>
+            <button className = {option === chosen ? "chosen--button" : "choice--item"} value = {option} onClick = {buttonClick}>{decodeHtml(option)}</button>
         )
     }
     
     const listChoices = props.choices.map(option =>
-                                choicesDisplay(props, decodeHtml(option)))
+                                choicesDisplay(props, option))
 
     
     

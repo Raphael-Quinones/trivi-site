@@ -71,12 +71,14 @@ export default function(){
     }
     
     function checkAnswers(answer, correctAnswer){
+        console.log("answer: ", answer)
+        console.log("cor: ", correctAnswer)
         const test = answer === correctAnswer
         if (test){
             setScore(prevState => prevState + 1)
         }
     }
-    
+    console.log(score)
     
 
 
@@ -101,6 +103,7 @@ export default function(){
         <button className = "check-answers" onClick = {changePlay}>
             {callPlay() ? "Check Answers" : "Play Again"}
         </button>
+        {playing ? "" : score}
         </div>
         
     )
