@@ -1,6 +1,7 @@
 import React from "react"
 import { nanoid } from "nanoid";
-
+import yellowblob from "./img/yellow blob.png"
+import blueblob from "./img/blue blob.png"
 import Questions from "./Questions"
 
 export default function(){
