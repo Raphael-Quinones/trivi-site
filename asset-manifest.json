@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/trivi-site/static/css/main.9ec136cc.css",
+    "main.js": "/trivi-site/static/js/main.4be9d06c.js",
+    "index.html": "/trivi-site/index.html",
+    "main.9ec136cc.css.map": "/trivi-site/static/css/main.9ec136cc.css.map",
+    "main.4be9d06c.js.map": "/trivi-site/static/js/main.4be9d06c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ec136cc.css",
+    "static/js/main.4be9d06c.js"
+  ]
+}
